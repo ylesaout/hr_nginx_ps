@@ -27,7 +27,7 @@ echo "compile nginx"
 cd nginx-${NGINX_VERSION}/
 ./configure --add-module=$HOME/ngx_pagespeed-release-${NPS_VERSION}-beta ${PS_NGX_EXTRA_FLAGS} --with-http_sub_module
 make
-sudo make install
+make install
 
 
 # Update the PATH
