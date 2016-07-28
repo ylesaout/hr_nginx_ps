@@ -38,15 +38,15 @@ echo $BUILD_DIR
 cd
 mkdir -p $BUILD_DIR/.profile.d
 cat > $BUILD_DIR/.profile.d/nginx.sh <<"EOF"
-export PATH="$PATH:$HOME/nginx-${NGINX_VERSION}"
+export PATH="$PATH:$HOME/nginx:$HOME/ngnix/sbin"
 EOF
 
 
 # build a startup script
 cat <<EOF >"$BUILD_DIR/start_nginx"
 #!/usr/bin/env bash
-rm -f /app/nginx-${NGINX_VERSION}/nginx.conf
-erb /app/conf/nginx.conf.erb > /app/nginx-${NGINX_VERSION}/nginx.conf
-exec /app/nginx-${NGINX_VERSION}/nginx -p /app/nginx-${NGINX_VERSION} -c /app/nginx-${NGINX_VERSION}/nginx.conf
+rm -f $HOME/nginx/conf/nginx.conf
+erb $HOME/conf/nginx.conf.erb > $HOME/nginx/conf/nginx.conf
+exec $HOME/nginx/nginx -p $HOME/nginx -c $HOME/nginx/conf/nginx.conf
 EOF
 chmod +x "$BUILD_DIR/start_nginx"
