@@ -11,7 +11,7 @@ CACHE_DIR=$2
 
 mkdir -p $BUILD_DIR $CACHE_DIR
 
-if [[ ! -d $CACHE_DIR/nginx-$NGINX_VERSION-$NPS_VERSION ]]; then
+#if [[ ! -d $CACHE_DIR/nginx-$NGINX_VERSION-$NPS_VERSION ]]; then
     echo "-----> download and unzip pagespeed"
     cd
     wget https://github.com/pagespeed/ngx_pagespeed/archive/release-${NPS_VERSION}-beta.zip -O release-${NPS_VERSION}-beta.zip
@@ -29,8 +29,8 @@ if [[ ! -d $CACHE_DIR/nginx-$NGINX_VERSION-$NPS_VERSION ]]; then
     cd
     cd nginx-${NGINX_VERSION}/
     ./configure \
-        --add-module=$HOME/ngx_pagespeed-release-${NPS_VERSION}-beta ${PS_NGX_EXTRA_FLAGS} \
         --with-http_sub_module \
+        --add-module=$HOME/ngx_pagespeed-release-${NPS_VERSION}-beta ${PS_NGX_EXTRA_FLAGS} \
         --prefix=$BUILD_DIR/nginx
     make
     make install
@@ -39,12 +39,12 @@ if [[ ! -d $CACHE_DIR/nginx-$NGINX_VERSION-$NPS_VERSION ]]; then
     mkdir -p $CACHE_DIR/nginx-$NGINX_VERSION-$NPS_VERSION
     cp -r $BUILD_DIR/nginx/* $CACHE_DIR/nginx-$NGINX_VERSION-$NPS_VERSION
 
-else
-    echo "-----> copy nginx from cache"
-    cd
-    mkdir $BUILD_DIR/nginx
-    cp -r $CACHE_DIR/nginx-$NGINX_VERSION-$NPS_VERSION/* $BUILD_DIR/nginx
-fi
+#else
+ #   echo "-----> copy nginx from cache"
+  #  cd
+  #  mkdir $BUILD_DIR/nginx
+  #  cp -r $CACHE_DIR/nginx-$NGINX_VERSION-$NPS_VERSION/* $BUILD_DIR/nginx
+#fi
 
 
 
