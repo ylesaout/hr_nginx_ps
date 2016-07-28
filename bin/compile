@@ -25,7 +25,7 @@ tar -xvzf nginx-${NGINX_VERSION}.tar.gz
 
 echo "compile nginx"
 cd nginx-${NGINX_VERSION}/
-./configure --add-module=$HOME/ngx_pagespeed-release-${NPS_VERSION}-beta ${PS_NGX_EXTRA_FLAGS} --with-http_sub_module --prefix=/tmp/nginx
+./configure --add-module=$HOME/ngx_pagespeed-release-${NPS_VERSION}-beta ${PS_NGX_EXTRA_FLAGS} --with-http_sub_module --prefix=/app/nginx
 make
 make install
 
@@ -43,7 +43,7 @@ EOF
 cat <<EOF >"$BUILD_DIR/start_nginx"
 #!/usr/bin/env bash
 rm -f /app/nginx-${NGINX_VERSION}/nginx.conf
-erb /app/nginx-${NGINX_VERSION}/nginx.conf.erb > /app/nginx-${NGINX_VERSION}/nginx.conf
+erb /app/conf/nginx.conf.erb > /app/nginx-${NGINX_VERSION}/nginx.conf
 exec /app/nginx-${NGINX_VERSION}/nginx -p /app/nginx-${NGINX_VERSION} -c /app/nginx-${NGINX_VERSION}/nginx.conf
 EOF
 chmod +x "$BUILD_DIR/start_nginx"
