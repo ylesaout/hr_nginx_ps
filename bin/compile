@@ -11,8 +11,6 @@ CACHE_DIR=$2
 
 mkdir -p $BUILD_DIR $CACHE_DIR
 
-echo "-----"
-echo $CACHE_DIR/nginx-$NGINX_VERSION-$NPS_VERSION
 if [[ ! -d $CACHE_DIR/nginx-$NGINX_VERSION-$NPS_VERSION ]]; then
     echo "-----> download and unzip pagespeed"
     cd
