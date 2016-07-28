@@ -30,6 +30,7 @@ make
 make install
 
 
+BUILD_DIR=$1
 # Update the PATH
 cd
 mkdir -p $BUILD_DIR/.profile.d
