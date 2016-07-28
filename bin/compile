@@ -31,6 +31,7 @@ make install
 
 
 # Update the PATH
+cd
 mkdir -p $BUILD_DIR/.profile.d
 cat > $BUILD_DIR/.profile.d/nginx.sh <<"EOF"
 export PATH="$PATH:$HOME/nginx-${NGINX_VERSION}"
