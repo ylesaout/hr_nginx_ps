@@ -47,6 +47,6 @@ cat <<EOF >"$BUILD_DIR/start_nginx"
 #!/usr/bin/env bash
 rm -f $HOME/nginx/conf/nginx.conf
 erb $HOME/conf/nginx.conf.erb > $HOME/nginx/conf/nginx.conf
-exec $HOME/nginx/nginx -p $HOME/nginx -c $HOME/nginx/conf/nginx.conf
+exec $HOME/nginx/sbin/nginx -p $HOME/nginx -c $HOME/nginx/conf/nginx.conf
 EOF
 chmod +x "$BUILD_DIR/start_nginx"
