@@ -25,7 +25,7 @@ tar -xvzf nginx-${NGINX_VERSION}.tar.gz
 
 echo "compile nginx"
 cd nginx-${NGINX_VERSION}/
-./configure --add-module=$HOME/ngx_pagespeed-release-${NPS_VERSION}-beta ${PS_NGX_EXTRA_FLAGS} --with-http_sub_module
+./configure --add-module=$HOME/ngx_pagespeed-release-${NPS_VERSION}-beta ${PS_NGX_EXTRA_FLAGS} --with-http_sub_module --prefix=/tmp/nginx
 make
 make install
 
